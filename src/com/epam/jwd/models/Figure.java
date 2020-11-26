@@ -2,7 +2,7 @@ package com.epam.jwd.models;
 
 import com.epam.jwd.strategy.FigurePropertyStrategy;
 
-class Figure {
+public class Figure {
 
     private FigurePropertyStrategy figurePropertyStrategy;
 

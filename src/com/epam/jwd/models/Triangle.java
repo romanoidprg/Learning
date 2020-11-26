@@ -26,10 +26,10 @@ public class Triangle extends Figure {
     }
 
     public String getCoordInfo(){
-        return "Triangle (x1,y1;  x2,y2;  x3,y3):  "
+        return "Triangle ("
                 + pointA.GetX() + "," + pointA.GetY() + ";  "
                 + pointB.GetX() + "," + pointB.GetY() + ";  "
-                + pointC.GetX() + "," + pointC.GetY();
+                + pointC.GetX() + "," + pointC.GetY() + ")";
     }
 
     public double perimCalc() {

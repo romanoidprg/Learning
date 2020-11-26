@@ -22,9 +22,9 @@ public class Line extends Figure {
     }
 
     public String getCoordInfo(){
-        return "Line (x1,y1;  x2,y2):  "
+        return "Line ("
                 + pointA.GetX() + "," + pointA.GetY() + ";  "
-                + pointB.GetX() + "," + pointB.GetY();
+                + pointB.GetX() + "," + pointB.GetY() + "):";
     }
 
     @Override

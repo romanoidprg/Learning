@@ -2,15 +2,20 @@ package com.epam.jwd.models;
 
 import com.epam.jwd.strategy.ExistStrategy;
 
-public class Point extends Figure{
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+public class Point  {
     private int x;
     private int y;
 
     public Point(int x, int y){
-        this.setFigurePropertyStrategy(ExistStrategy.getInstance());
+        //this.setFigurePropertyStrategy(ExistStrategy.getInstance());
         this.x = x;
         this.y = y;
     }
+
+    public static final Logger logger = LogManager.getLogger(Point.class);
 
     public int GetX(){
         return x;
@@ -37,9 +42,14 @@ public class Point extends Figure{
            return false;
        }
     }
+
+    public void infoLogg(){
+        logger.info(this.toString());
+    }
+
     @Override
     public String toString() {
-        return "Point(x,y): " + x + ", " + y;
+        return "Point(" + x + ", " + y+") ";
     }
 
 }

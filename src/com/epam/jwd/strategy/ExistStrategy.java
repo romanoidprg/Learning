@@ -35,7 +35,7 @@ public class ExistStrategy implements FigurePropertyStrategy {
 
     @Override
     public String getLineInfo(Line line){
-        return line.getCoordInfo() + ".  LineLength = " + line.perimCalc();
+        return line.getCoordInfo() + ".  LineLength = " + String.format("%.3f", line.perimCalc());
     }
 
     @Override

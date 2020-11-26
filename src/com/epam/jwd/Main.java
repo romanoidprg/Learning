@@ -2,11 +2,8 @@ package com.epam.jwd;
 
 import com.epam.jwd.model.FigureFabric;
 import com.epam.jwd.model.FigureType;
-import com.epam.jwd.models.Line;
 import com.epam.jwd.models.Point;
-import com.epam.jwd.models.Square;
 import com.epam.jwd.models.Figure;
-import com.epam.jwd.models.Triangle;
 
 public class Main {
 
@@ -24,11 +21,13 @@ public class Main {
 
 
 
-        Figure [] arrayTriangle = {plateFabric.CreateFigure(FigureType.TRIANGLE,
-                                        new Point[]{arrayPoint[0],arrayPoint[1]}),
-                                   plateFabric.CreateFigure(FigureType.TRIANGLE, new Point[]{arrayPoint[2],arrayPoint[3]})};
+        Figure[] arrayTriangle = {plateFabric.CreateFigure(FigureType.TRIANGLE,
+                                        new Point[]{arrayPoint[0],arrayPoint[1],arrayPoint[2]}),
+                                   plateFabric.CreateFigure(FigureType.TRIANGLE,
+                                        new Point[]{arrayPoint[2],arrayPoint[3], arrayPoint[3]})};
 
-        Square[] arraySquare = {new Square(arrayPoint[0],arrayPoint[1],arrayPoint[2],arrayPoint[3])};
+        Figure[] arraySquare = {plateFabric.CreateFigure(FigureType.SQUARE,
+                    new Point[]{arrayPoint[0],arrayPoint[1],arrayPoint[2],arrayPoint[3]})};
 
         int i = 0;
         do {
@@ -40,11 +39,11 @@ public class Main {
             line.infoLogg();
         }
 
-        for (Triangle triangle: arrayTriangle){
+        for (Figure triangle: arrayTriangle){
             triangle.infoLogg();
         }
 
-        for (Square square: arraySquare){
+        for (Figure square: arraySquare){
             square.infoLogg();
         }
 

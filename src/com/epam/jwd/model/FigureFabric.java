@@ -8,7 +8,36 @@ import com.epam.jwd.strategy.ExistStrategy;
 import com.epam.jwd.strategy.NotSquareStrategy;
 import com.epam.jwd.strategy.SameLineStrategy;
 
+import java.util.ArrayList;
+
 public class FigureFabric {
+
+    private ArrayList<Figure> figureHash = new ArrayList<>();
+
+    private Figure cntrlExstFigCreator(Figure figure){
+        Figure fig = figure;
+        if (figureHash.isEmpty()) {
+            figureHash.add(figure);
+        } else {
+            int i = 0;
+            int indexOfExistFig = -1;
+            do {
+                if (figure.equals(figureHash.get(i))) {
+                    indexOfExistFig = i;
+                    break;
+                }
+                i++;
+            } while (i < figureHash.size());
+            if (indexOfExistFig == -1) {
+                figureHash.add(figure);
+            } else {
+                fig = figureHash.get(indexOfExistFig);
+            }
+        }
+        return fig;
+
+    }
+
     public Figure CreateFigure(FigureType figureType, Point[] arrayPoint){
 
         Figure figure = null;
@@ -16,19 +45,25 @@ public class FigureFabric {
         switch (figureType){
             case LINE:
                 if (arrayPoint.length>=2) {
-                    figure =  Line.getInstance(arrayPoint[0],arrayPoint[1]);
+                    figure = cntrlExstFigCreator(new Line(arrayPoint[0], arrayPoint[1]));
                 }
                 break;
 
             case TRIANGLE:
                 if (arrayPoint.length>=3) {
-                    figure = new Triangle(arrayPoint[0], arrayPoint[1], arrayPoint[2]);
+                    figure = cntrlExstFigCreator(new Triangle(arrayPoint[0], arrayPoint[1], arrayPoint[2]));
                 }
                 break;
 
             case SQUARE:
                 if (arrayPoint.length>=4) {
-                    figure = new Square(arrayPoint[0], arrayPoint[1], arrayPoint[2], arrayPoint[3]);
+                    figure = cntrlExstFigCreator(new Square(arrayPoint[0], arrayPoint[1], arrayPoint[2], arrayPoint[3]));
+                }
+                break;
+
+            case MULTI_ANGLE_FIGURE:
+                if (arrayPoint.length>=4 && arrayPoint.length<=6) {
+                    figure = cntrlExstFigCreator(new MultiAngleFigure(arrayPoint));
                 }
                 break;
 
@@ -42,8 +77,6 @@ public class FigureFabric {
         private final Point pointA;
         private final Point pointB;
 
-        private static Line instance;
-
         private Line(Point pA, Point pB){
             pointA = pA;
             pointB = pB;
@@ -54,11 +87,16 @@ public class FigureFabric {
             }
         }
 
-        public static Line getInstance(Point pA, Point pB) {
-            if ((instance==null)||(instance.pointA!=pA)||(instance.pointB!=pB)){
-                instance = new Line(pA, pB);
+        @Override
+        public boolean equals(Object obj) {
+            if (this==obj){
+                return true;
             }
-            return instance;
+            if (getClass() != obj.getClass()){
+                return false;
+            }
+            Line line = (Line)(obj);
+            return  (this.pointA.samePoint(line.pointA) && (this.pointB.samePoint(line.pointB)));
         }
 
         @Override
@@ -98,6 +136,20 @@ public class FigureFabric {
             } else {
                 setFigurePropertyStrategy(ExistStrategy.getInstance());
             }
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            if (this==obj){
+                return true;
+            }
+            if (getClass() != obj.getClass()){
+                return false;
+            }
+            Triangle triangle = (Triangle) (obj);
+            return  (this.pointA.samePoint(triangle.pointA)
+                 && (this.pointB.samePoint(triangle.pointB))
+                 && (this.pointC.samePoint(triangle.pointC)));
         }
 
         @Override
@@ -160,6 +212,21 @@ public class FigureFabric {
                 this.setFigurePropertyStrategy(NotSquareStrategy.getInstance());
             }
 
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            if (this==obj){
+                return true;
+            }
+            if (getClass() != obj.getClass()){
+                return false;
+            }
+            Square square = (Square) (obj);
+            return  (this.pointA.samePoint(square.pointA)
+                    && (this.pointB.samePoint(square.pointB))
+                    && (this.pointC.samePoint(square.pointC))
+                    && (this.pointD.samePoint(square.pointD)));
         }
 
         @Override

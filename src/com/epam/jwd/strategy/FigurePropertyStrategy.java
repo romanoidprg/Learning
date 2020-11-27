@@ -13,6 +13,8 @@ public interface FigurePropertyStrategy {
 
     public String getSquareInfo(Figure figure);
 
+    public String getMultiAngleInfo(Figure figure);
+
     public String toString();
 
 }

@@ -27,5 +27,8 @@ public enum  EqualPointsStrategy implements FigurePropertyStrategy {
             return figure.getCoordInfo() + "  is not exist. There is at least two equal points";
         }
 
-
+        @Override
+        public String getMultiAngleInfo(Figure figure) {
+            return figure.getCoordInfo() + "  is not exist. There is at least two equal points";
+        }
 }

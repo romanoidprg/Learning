@@ -38,4 +38,8 @@ public class NotSquareStrategy implements FigurePropertyStrategy {
         return figure.getCoordInfo() + "  is just rectangle, but is not square";
     }
 
+    @Override
+    public String getMultiAngleInfo(Figure figure) {
+        return "Its funny";
+    }
 }

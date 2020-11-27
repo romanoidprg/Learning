@@ -1,17 +1,15 @@
 package com.epam.jwd.model;
 
-import com.epam.jwd.models.Figure;
-import com.epam.jwd.models.Point;
 import com.epam.jwd.strategy.EqualPointsStrategy;
 import com.epam.jwd.strategy.ExistStrategy;
 import com.epam.jwd.strategy.SameLineStrategy;
 
-public class MultiAngleFigure extends Figure {
+class MultiAngleFigure extends Figure {
     private Point[] arrayPoint;
 
-    public MultiAngleFigure(Point[] arrayPoint){
-        this.arrayPoint = new Point[arrayPoint.length];
-        System.arraycopy(arrayPoint, 0, this.arrayPoint, 0, arrayPoint.length);
+    MultiAngleFigure(Point[] arP){
+        arrayPoint = new Point[arP.length];
+        System.arraycopy(arP, 0, arrayPoint, 0, arrayPoint.length);
 
        Boolean isRecievedStrategy = false;
 
@@ -34,15 +32,16 @@ public class MultiAngleFigure extends Figure {
                         this.setFigurePropertyStrategy(SameLineStrategy.getInstance());
                         isRecievedStrategy = true;
                         break;
-                    } else if (arrayPoint[i].IsOnSameLine(arrayPoint[i - arrayPoint.length + 2],
+                    }
+                } else if (arrayPoint[i].IsOnSameLine(arrayPoint[i - arrayPoint.length + 2],
                                                       arrayPoint[i - arrayPoint.length + 3])) {
                         this.setFigurePropertyStrategy(SameLineStrategy.getInstance());
                         isRecievedStrategy = true;
                         break;
-                    }
                 }
             }
         }
+
 
         if (!isRecievedStrategy) {
             this.setFigurePropertyStrategy(ExistStrategy.getInstance());
@@ -61,15 +60,21 @@ public class MultiAngleFigure extends Figure {
     }
 
     public double areaCalc(){
-        return Math.abs((12 ) / 2);
+        int s = 0;
+        for (int i = 0; i < arrayPoint.length-1; i++) {
+            s+=arrayPoint[i].getX()*arrayPoint[i+1].getY() - arrayPoint[i+1].getX()*arrayPoint[i].getY();
+        }
+        s+=arrayPoint[arrayPoint.length-1].getX()*arrayPoint[0].getY()
+                -arrayPoint[0].getX()*arrayPoint[arrayPoint.length-1].getY();
+        return Math.abs(s / 2);
     }
 
     public String getCoordInfo(){
-        String coordInfo = "Square (";
+        String coordInfo = "MultiAngel of " + arrayPoint.length + " points (";
         for (int i = 0; i < arrayPoint.length; i++) {
-            coordInfo += arrayPoint[i].GetX() + "," + arrayPoint[i].GetY() + ";  ";
+            coordInfo += arrayPoint[i].getX() + "," + arrayPoint[i].getY() + ";  ";
         }
-        return coordInfo + ")";
+        return coordInfo.substring(0, coordInfo.length()-3) + ")";
     }
 
     @Override

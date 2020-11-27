@@ -1,4 +1,4 @@
-package com.epam.jwd.models;
+package com.epam.jwd.model;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -14,18 +14,18 @@ public class Point  {
 
     public static final Logger logger = LogManager.getLogger(Point.class);
 
-    public int GetX(){
+    public int getX(){
         return x;
     }
 
-    public int GetY(){
+    public int getY(){
         return y;
     }
 
     public double lengthToPoint(Point point){
         return Math.sqrt(
-                Math.pow(this.GetX()-point.GetX(), 2)
-                +Math.pow(this.GetY()-point.GetY(), 2) );
+                Math.pow(this.getX()-point.getX(), 2)
+                +Math.pow(this.getY()-point.getY(), 2) );
     }
 
     public boolean samePoint(Point point){

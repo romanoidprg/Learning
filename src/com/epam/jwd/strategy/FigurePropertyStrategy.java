@@ -1,20 +1,18 @@
 package com.epam.jwd.strategy;
 
-import com.epam.jwd.models.Figure;
+import com.epam.jwd.model.Figure;
 import org.apache.logging.log4j.Logger;
 
 public interface FigurePropertyStrategy {
 
-    public Logger getLogg();
+     Logger getLogg();
 
-    public String getLineInfo(Figure figure);
+     String getLineInfo(Figure figure);
 
-    public String getTriangleInfo(Figure figure);
+     String getTriangleInfo(Figure figure);
 
-    public String getSquareInfo(Figure figure);
+     String getSquareInfo(Figure figure);
 
-    public String getMultiAngleInfo(Figure figure);
-
-    public String toString();
+     String getMultiAngleInfo(Figure figure);
 
 }

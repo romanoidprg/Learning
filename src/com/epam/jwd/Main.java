@@ -2,8 +2,8 @@ package com.epam.jwd;
 
 import com.epam.jwd.model.FigureFabric;
 import com.epam.jwd.model.FigureType;
-import com.epam.jwd.models.Point;
-import com.epam.jwd.models.Figure;
+import com.epam.jwd.model.Point;
+import com.epam.jwd.model.Figure;
 
 public class Main {
 
@@ -12,11 +12,12 @@ public class Main {
         FigureFabric figureFabric = new FigureFabric();
 
         Point[] arrayPoint = {new Point(0,0),
-                              new Point(4,4),
+                              new Point(4,1),
                               new Point(5,5),
                               new Point(4,0),
-                            new Point(5,5),
-                            new Point(4,0)};
+                              new Point(5,6),
+                              new Point(4,5)
+        };
 
         Figure[] arrayLine = {figureFabric.CreateFigure(FigureType.LINE, new Point[]{arrayPoint[0],arrayPoint[1]}),
                               figureFabric.CreateFigure(FigureType.LINE, new Point[]{arrayPoint[1],arrayPoint[2]}),

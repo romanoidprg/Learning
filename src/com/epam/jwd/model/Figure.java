@@ -1,4 +1,4 @@
-package com.epam.jwd.models;
+package com.epam.jwd.model;
 
 import com.epam.jwd.strategy.FigurePropertyStrategy;
 

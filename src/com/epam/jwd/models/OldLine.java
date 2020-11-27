@@ -3,11 +3,11 @@ package com.epam.jwd.models;
 import com.epam.jwd.strategy.EqualPointsStrategy;
 import com.epam.jwd.strategy.ExistStrategy;
 
-public class Line extends Figure {
+public class OldLine extends Figure {
     private Point pointA;
     private Point pointB;
 
-    public Line(Point pA, Point pB){
+    public OldLine(Point pA, Point pB){
         pointA = pA;
         pointB = pB;
         if (pointA.samePoint(pointB)) {

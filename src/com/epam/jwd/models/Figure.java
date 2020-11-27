@@ -18,4 +18,16 @@ public class Figure {
         figurePropertyStrategy.getLogg().log(figurePropertyStrategy.getLogg().getLevel(), this.toString());
     }
 
+    public String getCoordInfo(){
+        return "Unknown figure";
+    }
+
+    public double perimCalc(){
+        return 0;
+    }
+
+    public double areaCalc(){
+        return 0;
+    }
+
 }

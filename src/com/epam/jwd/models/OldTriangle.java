@@ -4,12 +4,12 @@ import com.epam.jwd.strategy.EqualPointsStrategy;
 import com.epam.jwd.strategy.ExistStrategy;
 import com.epam.jwd.strategy.SameLineStrategy;
 
-public class Triangle extends Figure {
+public class OldTriangle extends Figure {
     private Point pointA;
     private Point pointB;
     private Point pointC;
 
-    public Triangle(Point pA, Point pB, Point pC){
+    public OldTriangle(Point pA, Point pB, Point pC){
         pointA = pA;
         pointB = pB;
         pointC = pC;

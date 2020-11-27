@@ -5,13 +5,13 @@ import com.epam.jwd.strategy.ExistStrategy;
 import com.epam.jwd.strategy.NotSquareStrategy;
 import com.epam.jwd.strategy.SameLineStrategy;
 
-public class Square extends Figure {
+public class OldSquare extends Figure {
     private Point pointA;
     private Point pointB;
     private Point pointC;
     private Point pointD;
 
-    public Square(Point pointA, Point pointB, Point pointC, Point pointD){
+    public OldSquare(Point pointA, Point pointB, Point pointC, Point pointD){
        this.pointA = pointA;
        this.pointB = pointB;
        this.pointC = pointC;

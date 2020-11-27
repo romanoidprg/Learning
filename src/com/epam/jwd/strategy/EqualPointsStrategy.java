@@ -13,18 +13,18 @@ public enum  EqualPointsStrategy implements FigurePropertyStrategy {
         }
 
         @Override
-        public String getTriangleInfo(Figure triangle) {
-            return triangle.getCoordInfo() + "  is not exist. There is at least two equal points";
+        public String getTriangleInfo(Figure figure) {
+            return figure.getCoordInfo() + "  is not exist. There is at least two equal points";
         }
 
         @Override
-        public String getLineInfo(Figure line) {
-            return line.getCoordInfo() + "  isn't exist. There is two equal points";
+        public String getLineInfo(Figure figure) {
+            return figure.getCoordInfo() + "  isn't exist. There is two equal points";
         }
 
         @Override
-        public String getSquareInfo(Figure square) {
-            return square.getCoordInfo() + "  is not exist. There is at least two equal points";
+        public String getSquareInfo(Figure figure) {
+            return figure.getCoordInfo() + "  is not exist. There is at least two equal points";
         }
 
 

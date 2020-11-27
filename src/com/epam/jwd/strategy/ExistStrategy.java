@@ -24,20 +24,20 @@ public class ExistStrategy implements FigurePropertyStrategy {
     }
 
     @Override
-    public String getTriangleInfo(Figure triangle){
-        return triangle.getCoordInfo() + ".  Perimetr = " + String.format("%.3f",triangle.perimCalc())
-                + ".  Area = " + String.format("%.3f",triangle.areaCalc());
+    public String getTriangleInfo(Figure figure){
+        return figure.getCoordInfo() + ".  Perimetr = " + String.format("%.3f",figure.perimCalc())
+                + ".  Area = " + String.format("%.3f",figure.areaCalc());
     }
 
     @Override
-    public String getLineInfo(Figure line){
-        return line.getCoordInfo() + ".  LineLength = " + String.format("%.3f", line.perimCalc());
+    public String getLineInfo(Figure figure){
+        return figure.getCoordInfo() + ".  LineLength = " + String.format("%.3f", figure.perimCalc());
     }
 
     @Override
-    public String getSquareInfo(Figure square){
-        return square.getCoordInfo() + ".  Perimetr = " + String.format("%.3f", square.perimCalc())
-                + ".  Area = " + String.format("%.3f", square.areaCalc());
+    public String getSquareInfo(Figure figure){
+        return figure.getCoordInfo() + ".  Perimetr = " + String.format("%.3f", figure.perimCalc())
+                + ".  Area = " + String.format("%.3f", figure.areaCalc());
     }
 
 }

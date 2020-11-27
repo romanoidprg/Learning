@@ -7,11 +7,11 @@ public interface FigurePropertyStrategy {
 
     public Logger getLogg();
 
-    public String getLineInfo(Figure line);
+    public String getLineInfo(Figure figure);
 
-    public String getTriangleInfo(Figure triangle);
+    public String getTriangleInfo(Figure figure);
 
-    public String getSquareInfo(Figure square);
+    public String getSquareInfo(Figure figure);
 
     public String toString();
 

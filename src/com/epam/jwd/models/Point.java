@@ -1,16 +1,13 @@
 package com.epam.jwd.models;
 
-import com.epam.jwd.strategy.ExistStrategy;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class Point  {
-    private int x;
-    private int y;
+    private final int x;
+    private final int y;
 
     public Point(int x, int y){
-        //this.setFigurePropertyStrategy(ExistStrategy.getInstance());
         this.x = x;
         this.y = y;
     }
@@ -36,11 +33,7 @@ public class Point  {
     }
 
     public boolean IsOnSameLine(Point p1, Point p2){
-       if ((p2.x-this.x)*(p1.y-this.y)==(p1.x-this.x)*(p2.y-this.y)){
-           return true;
-       } else {
-           return false;
-       }
+       return ((p2.x-this.x)*(p1.y-this.y)==(p1.x-this.x)*(p2.y-this.y));
     }
 
     public void infoLogg(){

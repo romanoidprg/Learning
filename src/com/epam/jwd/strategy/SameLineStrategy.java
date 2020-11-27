@@ -22,18 +22,18 @@ public class SameLineStrategy implements FigurePropertyStrategy {
     }
 
     @Override
-    public String getTriangleInfo(Figure triangle) {
-        return triangle.getCoordInfo() + "  is not exist. The points are on the same line";
+    public String getTriangleInfo(Figure figure) {
+        return figure.getCoordInfo() + "  is not exist. The points are on the same line";
     }
 
     @Override
-    public String getLineInfo(Figure line){
+    public String getLineInfo(Figure figure){
         return "This is not line strategy";
     }
 
     @Override
-    public String getSquareInfo(Figure square){
-        return square.getCoordInfo() + "  is not exist. Some three points are on the same line";
+    public String getSquareInfo(Figure figure){
+        return figure.getCoordInfo() + "  is not exist. Some three points are on the same line";
     }
 
 }

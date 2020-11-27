@@ -24,18 +24,18 @@ public class NotSquareStrategy implements FigurePropertyStrategy {
     }
 
     @Override
-    public String getTriangleInfo(Figure triangle){
-        return triangle.getCoordInfo() + ".  Perimetr = " + triangle.perimCalc() + ".  Area = " + triangle.areaCalc();
+    public String getTriangleInfo(Figure figure){
+        return figure.getCoordInfo() + ".  Perimetr = " + figure.perimCalc() + ".  Area = " + figure.areaCalc();
     }
 
     @Override
-    public String getLineInfo(Figure line){
-        return line.getCoordInfo() + ".  LineLength = " + line.perimCalc();
+    public String getLineInfo(Figure figure){
+        return figure.getCoordInfo() + ".  LineLength = " + figure.perimCalc();
     }
 
     @Override
-    public String getSquareInfo(Figure square){
-        return square.getCoordInfo() + "  is just rectangle, but is not square";
+    public String getSquareInfo(Figure figure){
+        return figure.getCoordInfo() + "  is just rectangle, but is not square";
     }
 
 }

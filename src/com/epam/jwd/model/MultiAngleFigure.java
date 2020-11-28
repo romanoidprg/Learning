@@ -50,7 +50,7 @@ class MultiAngleFigure extends Figure {
     }
 
     @Override
-    double perimCalc() {
+    public double perimCalc() {
         double p = 0;
         for (int i = 0; i < arrayPoint.length-1; i++) {
             p+=arrayPoint[i].lengthToPoint(arrayPoint[i+1]);
@@ -60,7 +60,7 @@ class MultiAngleFigure extends Figure {
     }
 
     @Override
-    double areaCalc(){
+    public double areaCalc(){
         int s = 0;
         for (int i = 0; i < arrayPoint.length-1; i++) {
             s+=arrayPoint[i].getX()*arrayPoint[i+1].getY() - arrayPoint[i+1].getX()*arrayPoint[i].getY();

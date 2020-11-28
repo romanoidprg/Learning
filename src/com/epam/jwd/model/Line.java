@@ -30,7 +30,7 @@ class Line extends Figure {
     }
 
     @Override
-    double perimCalc() {
+    public double perimCalc() {
         return pointA.lengthToPoint(pointB);
     }
 

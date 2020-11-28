@@ -36,6 +36,7 @@ public class Point  {
        return ((p2.x-this.x)*(p1.y-this.y)==(p1.x-this.x)*(p2.y-this.y));
     }
 
+
     public void infoLogg(){
         logger.info(this.toString());
     }

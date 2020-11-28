@@ -22,11 +22,11 @@ public class Figure {
         return "Unknown figure";
     }
 
-    public double perimCalc(){
+    double perimCalc(){
         return 0;
     }
 
-    public double areaCalc(){
+    double areaCalc(){
         return 0;
     }
 

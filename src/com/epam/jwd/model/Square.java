@@ -56,13 +56,13 @@ class Square extends Figure {
     }
 
     @Override
-    public double perimCalc() {
+    double perimCalc() {
         return pointA.lengthToPoint(pointB) + pointB.lengthToPoint(pointC)
                 + pointC.lengthToPoint(pointD) + pointD.lengthToPoint(pointA);
     }
 
     @Override
-    public double areaCalc(){
+    double areaCalc(){
         return Math.abs((pointA.getX()*pointB.getY() + pointB.getX()*pointC.getY()
                 + pointC.getX()*pointD.getY() + pointD.getX()*pointA.getY()
                 - pointB.getX()*pointA.getY() - pointC.getX()*pointB.getY()

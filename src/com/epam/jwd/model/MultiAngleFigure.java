@@ -45,12 +45,12 @@ class MultiAngleFigure extends Figure {
 
         if (!isRecievedStrategy) {
             this.setFigurePropertyStrategy(ExistStrategy.getInstance());
-            isRecievedStrategy = true;
         }
 
     }
 
-    public double perimCalc() {
+    @Override
+    double perimCalc() {
         double p = 0;
         for (int i = 0; i < arrayPoint.length-1; i++) {
             p+=arrayPoint[i].lengthToPoint(arrayPoint[i+1]);
@@ -59,7 +59,8 @@ class MultiAngleFigure extends Figure {
         return p;
     }
 
-    public double areaCalc(){
+    @Override
+    double areaCalc(){
         int s = 0;
         for (int i = 0; i < arrayPoint.length-1; i++) {
             s+=arrayPoint[i].getX()*arrayPoint[i+1].getY() - arrayPoint[i+1].getX()*arrayPoint[i].getY();
@@ -69,6 +70,7 @@ class MultiAngleFigure extends Figure {
         return Math.abs(s / 2);
     }
 
+    @Override
     public String getCoordInfo(){
         String coordInfo = "MultiAngel of " + arrayPoint.length + " points (";
         for (int i = 0; i < arrayPoint.length; i++) {

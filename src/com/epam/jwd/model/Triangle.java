@@ -48,12 +48,12 @@ class Triangle extends Figure {
     }
 
     @Override
-    public double perimCalc() {
+    double perimCalc() {
         return pointA.lengthToPoint(pointB) + pointB.lengthToPoint(pointC) + pointC.lengthToPoint(pointA);
     }
 
     @Override
-    public double areaCalc() {
+    double areaCalc() {
         return Math.abs((pointA.getX() * (pointB.getY() - pointC.getY())
                 + pointB.getX() * (pointC.getY() - pointA.getY())
                 + pointC.getX() * (pointA.getY() - pointB.getY())) / 2);

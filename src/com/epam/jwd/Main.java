@@ -1,5 +1,6 @@
 package com.epam.jwd;
 
+import com.epam.jwd.exception.FigureNotExistException;
 import com.epam.jwd.model.FigureFabric;
 import com.epam.jwd.model.FigureType;
 import com.epam.jwd.model.Point;
@@ -28,27 +29,46 @@ public class Main {
                 new Point(5,6)
         };
 
-        Figure[] arrayLine = {
-                figureFabric.CreateFigure(FigureType.LINE, new Point[]{arrayPoint[0],arrayPoint[1]}),
-                figureFabric.CreateFigure(FigureType.LINE, new Point[]{arrayPoint[1],arrayPoint[2]}),
-                figureFabric.CreateFigure(FigureType.LINE, new Point[]{arrayPoint[0],arrayPoint[1]})
-        };
+        Figure[] arrayLine = new Figure[0];
+        try {
+            arrayLine = new Figure[]{
+                    figureFabric.CreateFigure(FigureType.LINE, new Point[]{arrayPoint[0],arrayPoint[1]}),
+                    figureFabric.CreateFigure(FigureType.LINE, new Point[]{arrayPoint[1],arrayPoint[2]}),
+                    figureFabric.CreateFigure(FigureType.LINE, new Point[]{arrayPoint[0],arrayPoint[1]})
+            };
+        } catch (FigureNotExistException e) {
+            e.printStackTrace();
+        }
 
 
+        Figure[] arrayTriangle = new Figure[0];
+        try {
+            arrayTriangle = new Figure[]{
+                    figureFabric.CreateFigure(FigureType.TRIANGLE, new Point[]{arrayPoint[0],arrayPoint[1]}),
+                    figureFabric.CreateFigure(FigureType.TRIANGLE, new Point[]{arrayPoint[2],arrayPoint[3], arrayPoint[3]})
+            };
+        } catch (FigureNotExistException e) {
+            e.printStackTrace();
+        }
 
-        Figure[] arrayTriangle = {
-                figureFabric.CreateFigure(FigureType.TRIANGLE, new Point[]{arrayPoint[0],arrayPoint[1],arrayPoint[2]}),
-                figureFabric.CreateFigure(FigureType.TRIANGLE, new Point[]{arrayPoint[2],arrayPoint[3], arrayPoint[3]})
-        };
+        Figure[] arraySquare = new Figure[0];
+        try {
+            arraySquare = new Figure[]{
+                    figureFabric.CreateFigure(FigureType.SQUARE,
+                            new Point[]{arrayPoint[0],arrayPoint[1],arrayPoint[2],arrayPoint[3]})};
+        } catch (FigureNotExistException e) {
+            e.printStackTrace();
+        }
 
-        Figure[] arraySquare = {
-                figureFabric.CreateFigure(FigureType.SQUARE,
-                        new Point[]{arrayPoint[0],arrayPoint[1],arrayPoint[2],arrayPoint[3]})};
-
-        Figure[] arrayMAF = {
-                figureFabric.CreateFigure(FigureType.MULTI_ANGLE_FIGURE, arrayPoint),
-                figureFabric.CreateFigure(FigureType.MULTI_ANGLE_FIGURE, arrayPointMAF),
-        };
+        Figure[] arrayMAF = new Figure[0];
+        try {
+            arrayMAF = new Figure[]{
+                    figureFabric.CreateFigure(FigureType.MULTI_ANGLE_FIGURE, arrayPoint),
+                    figureFabric.CreateFigure(FigureType.MULTI_ANGLE_FIGURE, arrayPointMAF),
+            };
+        } catch (FigureNotExistException e) {
+            e.printStackTrace();
+        }
 
 
         int i = 0;

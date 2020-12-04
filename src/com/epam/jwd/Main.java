@@ -1,5 +1,6 @@
 package com.epam.jwd;
 
+import com.epam.jwd.exception.FigureException;
 import com.epam.jwd.exception.FigureNotExistException;
 import com.epam.jwd.model.FigureFabric;
 import com.epam.jwd.model.FigureType;
@@ -8,7 +9,7 @@ import com.epam.jwd.model.Figure;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FigureException {
 
         FigureFabric figureFabric = new FigureFabric();
 
@@ -32,7 +33,7 @@ public class Main {
         Figure[] arrayLine = new Figure[0];
         try {
             arrayLine = new Figure[]{
-                    figureFabric.CreateFigure(FigureType.LINE, new Point[]{arrayPoint[0],arrayPoint[1]}),
+                    figureFabric.CreateFigure(FigureType.D3_FIGURE, new Point[]{arrayPoint[0],arrayPoint[1]}),
                     figureFabric.CreateFigure(FigureType.LINE, new Point[]{arrayPoint[1],arrayPoint[2]}),
                     figureFabric.CreateFigure(FigureType.LINE, new Point[]{arrayPoint[0],arrayPoint[1]})
             };

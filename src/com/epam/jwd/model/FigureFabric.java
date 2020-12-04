@@ -1,6 +1,8 @@
 package com.epam.jwd.model;
 
+import com.epam.jwd.exception.FigureException;
 import com.epam.jwd.exception.FigureNotExistException;
+import com.epam.jwd.service.impl.FigureExistencePostProcessor;
 
 import java.util.ArrayList;
 
@@ -32,9 +34,10 @@ public class FigureFabric {
 
     }
 
-    public Figure CreateFigure(FigureType figureType, Point[] arrayPoint) throws FigureNotExistException {
+    public Figure CreateFigure(FigureType figureType, Point[] arrayPoint) throws FigureException {
 
-        Figure figure = null;
+        Figure figure;
+        FigureExistencePostProcessor postProcessor = new FigureExistencePostProcessor();
 
         switch (figureType) {
             case LINE:
@@ -62,14 +65,17 @@ public class FigureFabric {
                 break;
 
             case MULTI_ANGLE_FIGURE:
-                if (arrayPoint.length >= 4 && arrayPoint.length <= 6) {
+                if (arrayPoint.length >= 4) {
                     figure = cntrlExstFigCreator(new MultiAngleFigure(arrayPoint));
                 } else {
                     throw new FigureNotExistException("You are using less than 4 points, so you must declare another type of figure");
                 }
                 break;
 
+            default:
+                figure = null;
+
         }
-        return figure;
+        return postProcessor.process(figure);
     }
 }

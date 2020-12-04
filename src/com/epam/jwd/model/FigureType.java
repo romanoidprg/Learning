@@ -5,6 +5,7 @@ public enum FigureType {
     LINE,
     TRIANGLE,
     SQUARE,
-    MULTI_ANGLE_FIGURE;
+    MULTI_ANGLE_FIGURE,
+    D3_FIGURE;
 
 }

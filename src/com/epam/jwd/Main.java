@@ -33,7 +33,7 @@ public class Main {
         Figure[] arrayLine = new Figure[0];
         try {
             arrayLine = new Figure[]{
-                    figureFabric.CreateFigure(FigureType.D3_FIGURE, new Point[]{arrayPoint[0],arrayPoint[1]}),
+                    figureFabric.CreateFigure(FigureType.LINE, new Point[]{arrayPoint[0],arrayPoint[1]}),
                     figureFabric.CreateFigure(FigureType.LINE, new Point[]{arrayPoint[1],arrayPoint[2]}),
                     figureFabric.CreateFigure(FigureType.LINE, new Point[]{arrayPoint[0],arrayPoint[1]})
             };
@@ -45,7 +45,7 @@ public class Main {
         Figure[] arrayTriangle = new Figure[0];
         try {
             arrayTriangle = new Figure[]{
-                    figureFabric.CreateFigure(FigureType.TRIANGLE, new Point[]{arrayPoint[0],arrayPoint[1]}),
+                    figureFabric.CreateFigure(FigureType.TRIANGLE, new Point[]{arrayPoint[0],arrayPoint[1],arrayPoint[3]}),
                     figureFabric.CreateFigure(FigureType.TRIANGLE, new Point[]{arrayPoint[2],arrayPoint[3], arrayPoint[3]})
             };
         } catch (FigureNotExistException e) {

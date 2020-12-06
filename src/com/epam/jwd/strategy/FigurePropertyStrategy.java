@@ -5,14 +5,7 @@ import org.apache.logging.log4j.Logger;
 
 public interface FigurePropertyStrategy {
 
-     Logger getLogg();
+    Logger getLogg();
 
-     String getLineInfo(Figure figure);
-
-     String getTriangleInfo(Figure figure);
-
-     String getSquareInfo(Figure figure);
-
-     String getMultiAngleInfo(Figure figure);
-
+    String getInfo(Figure figure);
 }

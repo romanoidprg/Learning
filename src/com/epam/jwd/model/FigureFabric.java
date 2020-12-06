@@ -3,75 +3,52 @@ package com.epam.jwd.model;
 import com.epam.jwd.exception.FigureException;
 import com.epam.jwd.exception.FigureNotExistException;
 import com.epam.jwd.service.impl.FigureExistencePostProcessor;
+import com.epam.jwd.service.impl.FigureExistencePreProcessor;
 
 import java.util.ArrayList;
 
 public class FigureFabric {
 
-    private ArrayList<Figure> figureCash = new ArrayList<>();
-
-    private Figure cntrlExstFigCreator(Figure figure) {
-        Figure fig = figure;
-        if (figureCash.isEmpty()) {
-            figureCash.add(figure);
-        } else {
-            int i = 0;
-            int indexOfExistFig = -1;
-            do {
-                if (figure.equals(figureCash.get(i))) {
-                    indexOfExistFig = i;
-                    break;
-                }
-                i++;
-            } while (i < figureCash.size());
-            if (indexOfExistFig == -1) {
-                figureCash.add(figure);
-            } else {
-                fig = figureCash.get(indexOfExistFig);
-            }
-        }
-        return fig;
-
-    }
+    public static ArrayList<Figure> figureCash = new ArrayList<>();
 
     public Figure CreateFigure(FigureType figureType, Point[] arrayPoint) throws FigureException {
 
         Figure figure;
+        FigureExistencePreProcessor preProcessor = new FigureExistencePreProcessor();
         FigureExistencePostProcessor postProcessor = new FigureExistencePostProcessor();
 
         switch (figureType) {
             case LINE:
                 if (arrayPoint.length >= 2) {
-                    figure = cntrlExstFigCreator(new Line(arrayPoint[0], arrayPoint[1]));
+                    figure = preProcessor.process(new Line(arrayPoint[0], arrayPoint[1]));
                 } else {
-                    throw new FigureNotExistException("The line with 1 point doesn't exist");
+                    throw new FigureNotExistException(FigureType.ONE_POINT_LINE_MSG);
                 }
                 break;
 
             case TRIANGLE:
                 if (arrayPoint.length >= 3) {
-                    figure = cntrlExstFigCreator(new Triangle(arrayPoint[0], arrayPoint[1], arrayPoint[2]));
+                    figure = preProcessor.process(new Triangle(arrayPoint[0], arrayPoint[1], arrayPoint[2]));
                 } else {
-                    throw new FigureNotExistException("The triangle with less than 3 points doesn't exist");
+                    throw new FigureNotExistException(FigureType.TWO_POINT_RECT_MSG);
                 }
                 break;
 
             case SQUARE:
                 if (arrayPoint.length >= 4) {
-                    figure = cntrlExstFigCreator(new Square(arrayPoint[0], arrayPoint[1], arrayPoint[2], arrayPoint[3]));
+                    figure = preProcessor.process(new Square(arrayPoint[0], arrayPoint[1], arrayPoint[2], arrayPoint[3]));
                 } else {
-                    throw new FigureNotExistException("The square with less than 4 points doesn't exist");
+                    throw new FigureNotExistException(FigureType.TREE_POINT_SQUARE_MSG);
                 }
                 break;
 
             case MULTI_ANGLE_FIGURE:
                 if (arrayPoint.length >= 4) {
-                    figure = cntrlExstFigCreator(new MultiAngleFigure(arrayPoint));
+                    figure = preProcessor.process(new MultiAngleFigure(arrayPoint));
                 } else {
-                    throw new FigureNotExistException("You are using less than 4 points, so you must declare another type of figure");
+                    throw new FigureNotExistException(FigureType.TREE_POINT_MAF_MSG);
                 }
                 break;
-
             default:
                 figure = null;
 

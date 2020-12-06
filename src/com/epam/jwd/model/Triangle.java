@@ -1,40 +1,33 @@
 package com.epam.jwd.model;
 
-import com.epam.jwd.strategy.EqualPointsStrategy;
-import com.epam.jwd.strategy.ExistStrategy;
-import com.epam.jwd.strategy.SameLineStrategy;
-
 class Triangle extends Figure {
     private final Point pointA;
     private final Point pointB;
     private final Point pointC;
 
     Triangle(Point pA, Point pB, Point pC) {
+        figureType = FigureType.TRIANGLE;
+
         pointA = pA;
         pointB = pB;
         pointC = pC;
 
-        if (pointA.samePoint(pointB) || pointA.samePoint(pointC) || pointB.samePoint(pointC)) {
-            setFigurePropertyStrategy(EqualPointsStrategy.INSTANCE);
-        } else if (pointA.IsOnSameLine(pointB, pointC)
-                || pointB.IsOnSameLine(pointC, pointA)
-                || pointC.IsOnSameLine(pointA, pointB)) {
-            setFigurePropertyStrategy(SameLineStrategy.getInstance());
-        } else {
-            setFigurePropertyStrategy(ExistStrategy.getInstance());
-        }
+        figurePointArray = new Point[3];
+        figurePointArray[0] = pA;
+        figurePointArray[1] = pB;
+        figurePointArray[2] = pC;
     }
 
     @Override
     public boolean equals(Object obj) {
-        if (this==obj){
+        if (this == obj) {
             return true;
         }
-        if (getClass() != obj.getClass()){
+        if (getClass() != obj.getClass()) {
             return false;
         }
         Triangle triangle = (Triangle) (obj);
-        return  (this.pointA.samePoint(triangle.pointA)
+        return (this.pointA.samePoint(triangle.pointA)
                 && (this.pointB.samePoint(triangle.pointB))
                 && (this.pointC.samePoint(triangle.pointC)));
     }
@@ -59,8 +52,4 @@ class Triangle extends Figure {
                 + pointC.getX() * (pointA.getY() - pointB.getY())) / 2);
     }
 
-    @Override
-    public String toString() {
-        return getFigurePropertyStrategy().getTriangleInfo(this);
-    }
 }

@@ -1,32 +1,29 @@
 package com.epam.jwd.model;
 
-import com.epam.jwd.strategy.EqualPointsStrategy;
-import com.epam.jwd.strategy.ExistStrategy;
-
 class Line extends Figure {
     private final Point pointA;
     private final Point pointB;
 
-    Line(Point pA, Point pB){
+    Line(Point pA, Point pB) {
+        figureType = FigureType.LINE;
         pointA = pA;
         pointB = pB;
-        if (pointA.samePoint(pointB)) {
-            this.setFigurePropertyStrategy(EqualPointsStrategy.INSTANCE);
-        } else {
-            this.setFigurePropertyStrategy(ExistStrategy.getInstance());
-        }
+
+        figurePointArray = new Point[2];
+        figurePointArray[0] = pA;
+        figurePointArray[1] = pB;
     }
 
     @Override
     public boolean equals(Object obj) {
-        if (this==obj){
+        if (this == obj) {
             return true;
         }
-        if (getClass() != obj.getClass()){
+        if (getClass() != obj.getClass()) {
             return false;
         }
-        Line line = (Line)(obj);
-        return  (this.pointA.samePoint(line.pointA) && (this.pointB.samePoint(line.pointB)));
+        Line line = (Line) (obj);
+        return (this.pointA.samePoint(line.pointA) && (this.pointB.samePoint(line.pointB)));
     }
 
     @Override
@@ -41,8 +38,4 @@ class Line extends Figure {
                 + pointB.getX() + "," + pointB.getY() + "):";
     }
 
-    @Override
-    public String toString() {
-        return this.getFigurePropertyStrategy().getLineInfo(this);
-    }
 }

@@ -24,25 +24,17 @@ public class ExistStrategy implements FigurePropertyStrategy {
     }
 
     @Override
-    public String getTriangleInfo(Figure figure){
-        return figure.getCoordInfo() + ".  Perimetr = " + String.format("%.3f",figure.perimCalc())
-                + ".  Area = " + String.format("%.3f",figure.areaCalc());
-    }
-
-    @Override
-    public String getLineInfo(Figure figure){
-        return figure.getCoordInfo() + ".  LineLength = " + String.format("%.3f", figure.perimCalc());
-    }
-
-    @Override
-    public String getSquareInfo(Figure figure){
-        return figure.getCoordInfo() + ".  Perimetr = " + String.format("%.3f", figure.perimCalc())
-                + ".  Area = " + String.format("%.3f", figure.areaCalc());
-    }
-
-    @Override
-    public String getMultiAngleInfo(Figure figure) {
-        return figure.getCoordInfo() + ".  Perimetr = " + String.format("%.3f", figure.perimCalc())
-                + ".  Area = " + String.format("%.3f", figure.areaCalc());
+    public String getInfo(Figure figure) {
+        switch (figure.getFigureType()) {
+            case LINE:
+                return figure.getCoordInfo() + ".  LineLength = " + String.format("%.3f", figure.perimCalc());
+            case TRIANGLE:
+            case SQUARE:
+            case MULTI_ANGLE_FIGURE:
+                return figure.getCoordInfo() + ".  Perimetr = " + String.format("%.3f",figure.perimCalc())
+                        + ".  Area = " + String.format("%.3f",figure.areaCalc());
+            default:
+                return "";
+        }
     }
 }

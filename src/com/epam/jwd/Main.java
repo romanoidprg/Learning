@@ -15,7 +15,7 @@ public class Main {
     public static void main(String[] args) throws FigureException {
 
 
-        FigureFactory simpleFigureFactory = new PostProcessFactory(new PreProcessFactory(new SimpleFigureFactory()));
+        FigureFactory simpleFigureFactory = new PostProcessFactory(new PreProcessFactory(SimpleFigureFactory.INSTANCE));
 
 
         Point[] arrayPoint = {

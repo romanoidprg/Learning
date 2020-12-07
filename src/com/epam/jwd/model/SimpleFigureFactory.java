@@ -7,7 +7,9 @@ import com.epam.jwd.service.impl.FigureExistencePreProcessor;
 
 import java.util.ArrayList;
 
-public class SimpleFigureFactory implements FigureFactory {
+public enum  SimpleFigureFactory implements FigureFactory {
+
+    INSTANCE;
 
     public static ArrayList<Figure> figureCash = new ArrayList<>();
 

@@ -16,4 +16,6 @@ public enum FigureType {
     public static final String FIG_NOTEXIST_ORUNKNOWN_MSG = "Figure doesn't exist or you declared unknown figure.";
     public static final String POINTS_ON_SAME_LINE_MSG = "  isn't valid. Some three points are on the same line";
     public static final String RECT_NOT_SQUARE_MSG = "  isn't valid. THis is rectangle but not square";
+    public static final String UNDEF_FIG_MSG = "Undefined figure!";
+
 }

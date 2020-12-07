@@ -1,19 +1,27 @@
-package com.epam.jwd.service.impl;
+package com.epam.jwd.decorator;
 
+import com.epam.jwd.exception.FigureException;
 import com.epam.jwd.exception.FigureNotExistException;
+import com.epam.jwd.factory.FigureFactory;
 import com.epam.jwd.model.Figure;
-import com.epam.jwd.model.SimpleFigureFactory;
 import com.epam.jwd.model.FigureType;
-import com.epam.jwd.service.FigureProcessor;
+import com.epam.jwd.model.Point;
+import com.epam.jwd.model.SimpleFigureFactory;
 
-public class FigureExistencePostProcessor implements FigureProcessor {
+public class PostProcessFactory extends FigureFactoryDecorator {
+
+    public PostProcessFactory(FigureFactory f) {
+        super(f);
+    }
+
     @Override
-    public Figure process(Figure figure) throws FigureNotExistException {
+    public Figure CreateFigure(FigureType figureType, Point[] arrayPoint) throws FigureException {
+        Figure figure = super.CreateFigure(figureType, arrayPoint);
+
         if (figure == null) {
             throw new FigureNotExistException(FigureType.FIG_NOTEXIST_ORUNKNOWN_MSG);
         }
 
-        Figure fig = figure;
         if (SimpleFigureFactory.figureCash.isEmpty()) {
             SimpleFigureFactory.figureCash.add(figure);
         } else {
@@ -29,10 +37,9 @@ public class FigureExistencePostProcessor implements FigureProcessor {
             if (indexOfExistFig == -1) {
                 SimpleFigureFactory.figureCash.add(figure);
             } else {
-                fig = SimpleFigureFactory.figureCash.get(indexOfExistFig);
+                figure = SimpleFigureFactory.figureCash.get(indexOfExistFig);
             }
         }
-        return fig;
-
+        return figure;
     }
 }

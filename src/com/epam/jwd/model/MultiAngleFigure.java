@@ -21,7 +21,7 @@ class MultiAngleFigure extends Figure {
 
     @Override
     public double areaCalc() {
-        int s = 0;
+        double s = 0;
         for (int i = 0; i < figurePointArray.length - 1; i++) {
             s += figurePointArray[i].getX() * figurePointArray[i + 1].getY() - figurePointArray[i + 1].getX() * figurePointArray[i].getY();
         }
@@ -32,7 +32,7 @@ class MultiAngleFigure extends Figure {
 
     @Override
     public String getCoordInfo() {
-        String coordInfo = "MultiAngel of " + figurePointArray.length + " points (";
+        String coordInfo = "MultiAngle of " + figurePointArray.length + " points (";
         for (int i = 0; i < figurePointArray.length; i++) {
             coordInfo += figurePointArray[i].getX() + "," + figurePointArray[i].getY() + ";  ";
         }

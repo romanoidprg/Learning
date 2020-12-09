@@ -4,6 +4,8 @@ import com.epam.jwd.decorator.PostProcessFactory;
 import com.epam.jwd.decorator.PreProcessFactory;
 import com.epam.jwd.exception.FigureException;
 import com.epam.jwd.exception.FigureNotExistException;
+import com.epam.jwd.factory.AppContext;
+import com.epam.jwd.factory.ConcreteAppContext;
 import com.epam.jwd.factory.FigureFactory;
 import com.epam.jwd.model.SimpleFigureFactory;
 import com.epam.jwd.model.FigureType;
@@ -14,9 +16,9 @@ public class Main {
 
     public static void main(String[] args) throws FigureException {
 
+        AppContext appContext = new ConcreteAppContext();
 
-        FigureFactory simpleFigureFactory = new PostProcessFactory(new PreProcessFactory(SimpleFigureFactory.INSTANCE));
-
+        FigureFactory simpleFigureFactory = appContext.createFigureFactory();
 
         Point[] arrayPoint = {
                 new Point(0, 0),

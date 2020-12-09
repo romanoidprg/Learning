@@ -10,9 +10,12 @@ import com.epam.jwd.strategy.ExistStrategy;
 import com.epam.jwd.strategy.NotSquareStrategy;
 import com.epam.jwd.strategy.SameLineStrategy;
 
-public class FigureExistencePreProcessor implements FigureProcessor {
+public enum  FigureExistenceAndSelectStrategyPreProcessor implements FigureProcessor {
+
+    INSTANCE;
+
     @Override
-    public Figure process(Figure figure) throws FigureNotExistException {
+    public Figure process(Figure figure) {
         Point[] figurePointArray = figure.getFigurePointArray();
         Boolean isRecievedStrategy = false;
 
@@ -53,19 +56,19 @@ public class FigureExistencePreProcessor implements FigureProcessor {
             }
         }
 
-            if ((figure.getFigureType() == FigureType.SQUARE)
-                    && !(figurePointArray[0].lengthToPoint(figurePointArray[1]) == figurePointArray[1].lengthToPoint(figurePointArray[2])
-                    && figurePointArray[1].lengthToPoint(figurePointArray[2]) == figurePointArray[2].lengthToPoint(figurePointArray[3])
-                    && figurePointArray[2].lengthToPoint(figurePointArray[3]) == figurePointArray[3].lengthToPoint(figurePointArray[0])
-                    && figurePointArray[0].lengthToPoint(figurePointArray[2]) == figurePointArray[1].lengthToPoint(figurePointArray[3]))) {
-                figure.setFigurePropertyStrategy(NotSquareStrategy.getInstance());
-                isRecievedStrategy = true;
-            }
-
-            if (!isRecievedStrategy) {
-                figure.setFigurePropertyStrategy(ExistStrategy.getInstance());
-            }
-
-            return figure;
+        if ((figure.getFigureType() == FigureType.SQUARE)
+                && !(figurePointArray[0].lengthToPoint(figurePointArray[1]) == figurePointArray[1].lengthToPoint(figurePointArray[2])
+                && figurePointArray[1].lengthToPoint(figurePointArray[2]) == figurePointArray[2].lengthToPoint(figurePointArray[3])
+                && figurePointArray[2].lengthToPoint(figurePointArray[3]) == figurePointArray[3].lengthToPoint(figurePointArray[0])
+                && figurePointArray[0].lengthToPoint(figurePointArray[2]) == figurePointArray[1].lengthToPoint(figurePointArray[3]))) {
+            figure.setFigurePropertyStrategy(NotSquareStrategy.getInstance());
+            isRecievedStrategy = true;
         }
+
+        if (!isRecievedStrategy) {
+            figure.setFigurePropertyStrategy(ExistStrategy.getInstance());
+        }
+
+        return figure;
     }
+}

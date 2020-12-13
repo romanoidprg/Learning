@@ -1,31 +1,32 @@
 package com.epam.jwd.service.impl;
 
 import com.epam.jwd.model.Figure;
-import com.epam.jwd.model.Storage;
 import com.epam.jwd.service.FigureCrud;
 
-import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 public class FigureCrudImpl implements FigureCrud {
 
-    private Storage storage;
+    private Collection<Figure> storage;
 
-    FigureCrudImpl(Storage storage){
+    public FigureCrudImpl(Collection<Figure> storage) {
         this.storage = storage;
     }
 
     @Override
     public void create(Figure figure) {
-
+        storage.add(figure);
     }
 
     @Override
-    public void multiCreate() {
-
+    public void multiCreate(Collection<Figure> figureCollection) {
+        storage.addAll(figureCollection);
     }
 
     @Override
     public void delete() {
+
 
     }
 

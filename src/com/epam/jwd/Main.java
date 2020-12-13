@@ -11,6 +11,11 @@ import com.epam.jwd.model.SimpleFigureFactory;
 import com.epam.jwd.model.FigureType;
 import com.epam.jwd.model.Point;
 import com.epam.jwd.model.Figure;
+import com.epam.jwd.service.impl.FigureCrudImpl;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Main {
 
@@ -37,7 +42,15 @@ public class Main {
                 new Point(5, 6)
         };
 
-        Figure[] arrayLine = new Figure[0];
+        FigureCrudImpl storage = new FigureCrudImpl(new ArrayList<Figure>());
+        storage.create(simpleFigureFactory.CreateFigure(FigureType.LINE, new Point[]{arrayPoint[0], arrayPoint[1]}));
+        storage.create(simpleFigureFactory.CreateFigure(FigureType.LINE, new Point[]{arrayPoint[1], arrayPoint[2]}));
+
+        for (Figure f : storage){
+
+        }
+
+            Figure[] arrayLine = new Figure[0];
         try {
             arrayLine = new Figure[]{
                     simpleFigureFactory.CreateFigure(FigureType.LINE, new Point[]{arrayPoint[0], arrayPoint[1]}),

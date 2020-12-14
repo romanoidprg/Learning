@@ -2,8 +2,6 @@ package com.epam.jwd.service;
 
 import com.epam.jwd.model.Figure;
 import com.epam.jwd.service.impl.FigureSearchCriterions;
-
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -18,9 +16,9 @@ public interface FigureCrud {
     void update(int position, Figure figure);
 
 
-    List find(Figure figure);
+    List<Figure> find(Figure figure);
 
     Figure findById(int id);
 
-    List findByCriterion(FigureSearchCriterions serchCriterions);
+    List<Figure> findByCriterion(FigureSearchCriterions serchCriterions);
 }

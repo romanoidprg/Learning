@@ -49,11 +49,11 @@ public class FigureCrudImpl implements FigureCrud {
     }
 
     @Override
-    public List findByCriterion(FigureSearchCriterions searchCriterions) {
-        return storage.stream().
+    public List<Figure> findByCriterion(FigureSearchCriterions searchCriterions) {
+        return (storage.stream().
                 filter(figure -> (searchCriterions.getFigureType() == null) ? figure != null : figure.getFigureType() == searchCriterions.getFigureType()).
                 filter(figure -> (searchCriterions.getFigureStrategy() == null) ? figure != null : figure.getFigurePropertyStrategy() == searchCriterions.getFigureStrategy()).
                 filter(figure -> (searchCriterions.getArrayPoints() == null) ? figure.getFigureType() != null : Arrays.asList(figure.getFigurePointArray()).containsAll(Arrays.asList(searchCriterions.getArrayPoints()))).
-                collect(Collectors.toList());
+                collect(Collectors.toList()));
     }
 }

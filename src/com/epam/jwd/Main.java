@@ -1,21 +1,18 @@
 package com.epam.jwd;
 
-import com.epam.jwd.decorator.PostProcessFactory;
-import com.epam.jwd.decorator.PreProcessFactory;
 import com.epam.jwd.exception.FigureException;
 import com.epam.jwd.exception.FigureNotExistException;
 import com.epam.jwd.factory.AppContext;
 import com.epam.jwd.factory.ConcreteAppContext;
 import com.epam.jwd.factory.FigureFactory;
-import com.epam.jwd.model.SimpleFigureFactory;
 import com.epam.jwd.model.FigureType;
 import com.epam.jwd.model.Point;
 import com.epam.jwd.model.Figure;
 import com.epam.jwd.service.impl.FigureCrudImpl;
+import com.epam.jwd.service.impl.FigureSearchCriterions;
+import com.epam.jwd.strategy.ExistStrategy;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class Main {
 
@@ -42,15 +39,63 @@ public class Main {
                 new Point(5, 6)
         };
 
-        FigureCrudImpl storage = new FigureCrudImpl(new ArrayList<Figure>());
-        storage.create(simpleFigureFactory.CreateFigure(FigureType.LINE, new Point[]{arrayPoint[0], arrayPoint[1]}));
-        storage.create(simpleFigureFactory.CreateFigure(FigureType.LINE, new Point[]{arrayPoint[1], arrayPoint[2]}));
+        FigureCrudImpl storage = new FigureCrudImpl(new ArrayList<>());
 
-        for (Figure f : storage){
+        try {
+            storage.create(simpleFigureFactory.CreateFigure(FigureType.LINE, new Point[]{arrayPoint[0], arrayPoint[1]}));
 
+            storage.multiCreate(
+                    Arrays.asList(
+                            new Figure[]{
+                                    simpleFigureFactory.CreateFigure(FigureType.LINE, new Point[]{arrayPoint[0], arrayPoint[1]}),
+                                    simpleFigureFactory.CreateFigure(FigureType.LINE, new Point[]{arrayPoint[1], arrayPoint[2]}),
+                                    simpleFigureFactory.CreateFigure(FigureType.LINE, new Point[]{arrayPoint[0], arrayPoint[1]}),
+                                    simpleFigureFactory.CreateFigure(FigureType.TRIANGLE, new Point[]{arrayPoint[0], arrayPoint[1], arrayPoint[3]}),
+                                    simpleFigureFactory.CreateFigure(FigureType.TRIANGLE, new Point[]{arrayPoint[2], arrayPoint[3], arrayPoint[3]}),
+                                    simpleFigureFactory.CreateFigure(FigureType.SQUARE, new Point[]{arrayPoint[0], arrayPoint[1], arrayPoint[2], arrayPoint[3]}),
+                                    simpleFigureFactory.CreateFigure(FigureType.SQUARE, new Point[]{arrayPoint[2], arrayPoint[3], arrayPoint[2], arrayPoint[3]}),
+                                    simpleFigureFactory.CreateFigure(FigureType.MULTI_ANGLE_FIGURE, arrayPoint),
+                                    simpleFigureFactory.CreateFigure(FigureType.MULTI_ANGLE_FIGURE, arrayPointMAF)
+                            }
+                    )
+            );
+        } catch (FigureNotExistException e) {
+            e.printStackTrace();
         }
 
-            Figure[] arrayLine = new Figure[0];
+        storage.delete(2);
+
+        try {
+            storage.update(2, simpleFigureFactory.CreateFigure(FigureType.LINE, new Point[]{arrayPoint[1], arrayPoint[2]}));
+        } catch (FigureNotExistException e) {
+            e.printStackTrace();
+        }
+
+        Iterator<Figure> iterator = storage.findByCriterion(new FigureSearchCriterions()).iterator();
+
+        while (iterator.hasNext()) {
+            iterator.next().infoLogg();
+        }
+
+
+        iterator = storage.findByCriterion(new FigureSearchCriterions.CriterionBuilder().withArrayPoints(new Point[]{arrayPoint[0], arrayPoint[1]}).build()).iterator();
+
+        while (iterator.hasNext()) {
+            iterator.next().infoLogg();
+        }
+
+        iterator = storage.findByCriterion(new FigureSearchCriterions.CriterionBuilder().withFigureStrategy(ExistStrategy.getInstance()).build()).iterator();
+
+        while (iterator.hasNext()) {
+            iterator.next().infoLogg();
+        }
+
+
+
+
+
+
+/*        Figure[] arrayLine = new Figure[0];
         try {
             arrayLine = new Figure[]{
                     simpleFigureFactory.CreateFigure(FigureType.LINE, new Point[]{arrayPoint[0], arrayPoint[1]}),
@@ -114,7 +159,7 @@ public class Main {
             mAF.infoLogg();
         }
 
-        System.out.println(arrayLine[0].hashCode() + "   " + arrayLine[2].hashCode());
+        System.out.println(arrayLine[0].hashCode() + "   " + arrayLine[2].hashCode());*/
 
     }
 

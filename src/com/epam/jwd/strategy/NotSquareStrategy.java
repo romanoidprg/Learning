@@ -26,11 +26,9 @@ public class NotSquareStrategy implements FigurePropertyStrategy {
 
     @Override
     public String getInfo(Figure figure) {
-        switch (figure.getFigureType()) {
-            case SQUARE:
-                return figure.getCoordInfo() + FigureType.RECT_NOT_SQUARE_MSG;
-            default:
-                return "";
+        if (figure.getFigureType() == FigureType.SQUARE) {
+            return figure.getCoordInfo() + FigureType.RECT_NOT_SQUARE_MSG;
         }
+        return "";
     }
 }

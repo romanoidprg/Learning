@@ -2,7 +2,7 @@ package com.epam.jwd.model;
 
 import com.epam.jwd.strategy.FigurePropertyStrategy;
 
-public class Figure {
+public abstract class Figure {
 
     protected FigureType figureType;
 
@@ -31,7 +31,7 @@ public class Figure {
     }
 
     public String getCoordInfo() {
-        return "Unknown figure";
+        return FigureType.UNDEF_FIG_MSG;
     }
 
     public double perimCalc() {

@@ -76,7 +76,9 @@ public class Main {
         while (iterator.hasNext()) {
             iterator.next().infoLogg();
         }
-
+        for (Figure f : storage.findByCriterion(new FigureSearchCriterions())) {
+            f.infoLogg();
+        }
 
         iterator = storage.findByCriterion(new FigureSearchCriterions.CriterionBuilder().withArrayPoints(new Point[]{arrayPoint[0], arrayPoint[1]}).build()).iterator();
 

@@ -71,26 +71,19 @@ public class Main {
             e.printStackTrace();
         }
 
-        Iterator<Figure> iterator = storage.findByCriterion(new FigureSearchCriterions()).iterator();
 
-        while (iterator.hasNext()) {
-            iterator.next().infoLogg();
-        }
         for (Figure f : storage.findByCriterion(new FigureSearchCriterions())) {
             f.infoLogg();
         }
 
-        iterator = storage.findByCriterion(new FigureSearchCriterions.CriterionBuilder().withArrayPoints(new Point[]{arrayPoint[0], arrayPoint[1]}).build()).iterator();
-
-        while (iterator.hasNext()) {
-            iterator.next().infoLogg();
+        for (Figure f : storage.findByCriterion(new FigureSearchCriterions.CriterionBuilder().withArrayPoints(new Point[]{arrayPoint[0], arrayPoint[1]}).build())){
+            f.infoLogg();
         }
 
-        iterator = storage.findByCriterion(new FigureSearchCriterions.CriterionBuilder().withFigureStrategy(ExistStrategy.getInstance()).build()).iterator();
-
-        while (iterator.hasNext()) {
-            iterator.next().infoLogg();
+        for (Figure f : storage.findByCriterion(new FigureSearchCriterions.CriterionBuilder().withFigureStrategy(ExistStrategy.getInstance()).build())){
+            f.infoLogg();
         }
+
 
 
 

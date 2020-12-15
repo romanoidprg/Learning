@@ -8,7 +8,7 @@ import org.apache.logging.log4j.Logger;
 public class SameLineStrategy implements FigurePropertyStrategy {
 
 
-    private static SameLineStrategy instance = new SameLineStrategy();
+    private static final SameLineStrategy instance = new SameLineStrategy();
 
     private SameLineStrategy(){
     }

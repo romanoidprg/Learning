@@ -22,7 +22,7 @@ public class FigureSearchCriterions {
     }
 
     public static class CriterionBuilder {
-        private FigureSearchCriterions searchCriterions;
+        private final FigureSearchCriterions searchCriterions;
 
         public CriterionBuilder() {
             searchCriterions = new FigureSearchCriterions();

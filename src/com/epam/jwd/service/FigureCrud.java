@@ -20,5 +20,5 @@ public interface FigureCrud {
 
     Figure findById(int id);
 
-    List<Figure> findByCriterion(FigureSearchCriterions serchCriterions);
+    List<Figure> findByCriterion(FigureSearchCriterions searchCriterions);
 }

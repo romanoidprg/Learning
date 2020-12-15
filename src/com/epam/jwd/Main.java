@@ -76,11 +76,18 @@ public class Main {
             f.infoLogg();
         }
 
-        for (Figure f : storage.findByCriterion(new FigureSearchCriterions.CriterionBuilder().withArrayPoints(new Point[]{arrayPoint[0], arrayPoint[1]}).build())){
+        for (Figure f : storage.findByCriterion(
+                new FigureSearchCriterions.CriterionBuilder()
+                        .withArrayPoints(new Point[]{arrayPoint[0], arrayPoint[1]}).build())
+        ) {
             f.infoLogg();
         }
 
-        for (Figure f : storage.findByCriterion(new FigureSearchCriterions.CriterionBuilder().withFigureStrategy(ExistStrategy.getInstance()).build())){
+        for (Figure f : storage.findByCriterion(
+                new FigureSearchCriterions.CriterionBuilder()
+                        .withFigureStrategy(ExistStrategy.getInstance())
+                        .withFigureType(FigureType.TRIANGLE).build())
+        ) {
             f.infoLogg();
         }
 

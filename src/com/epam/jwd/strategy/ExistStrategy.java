@@ -31,7 +31,7 @@ public class ExistStrategy implements FigurePropertyStrategy {
             case TRIANGLE:
             case SQUARE:
             case MULTI_ANGLE_FIGURE:
-                return figure.getCoordInfo() + ".  Perimetr = " + String.format("%.3f",figure.perimCalc())
+                return figure.getCoordInfo() + ".  Perimeter = " + String.format("%.3f",figure.perimCalc())
                         + ".  Area = " + String.format("%.3f",figure.areaCalc());
             default:
                 return "";

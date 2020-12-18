@@ -23,13 +23,11 @@ public class PostProcessFactory extends FigureFactoryDecorator {
 
         if (figure == null) {
             throw new FigureNotExistException(FigureType.FIG_NOTEXIST_ORUNKNOWN_MSG);
-        } else if (SimpleFigureFactory.figureCash.isEmpty()
-                || (SimpleFigureFactory.figureCash.stream().noneMatch(figure::equals))) {
+        } else if (SimpleFigureFactory.figureCash.contains(figure)) {
+            return SimpleFigureFactory.figureCash.get(SimpleFigureFactory.figureCash.indexOf(figure));
+        } else {
             SimpleFigureFactory.figureCash.add(figure);
             return figure;
-        } else {
-            return SimpleFigureFactory.figureCash.stream()
-                    .filter(figure::equals).collect(Collectors.toList()).get(0);
         }
 
       /*  if (SimpleFigureFactory.figureCash.isEmpty()) {

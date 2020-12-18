@@ -2,6 +2,8 @@ package com.epam.jwd.model;
 
 import com.epam.jwd.strategy.FigurePropertyStrategy;
 
+import java.util.Arrays;
+
 public abstract class Figure {
 
     protected FigureType figureType;
@@ -47,4 +49,22 @@ public abstract class Figure {
         return this.getFigurePropertyStrategy().getInfo(this);
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+         Figure fig = (Figure) (obj);
+        return (Arrays.asList(fig.figurePointArray).containsAll(Arrays.asList(this.figurePointArray))
+        && Arrays.asList(this.figurePointArray).containsAll(Arrays.asList(fig.figurePointArray)));
+
+    }
+
+    @Override
+    public int hashCode() {
+        return (figurePointArray.length+Arrays.hashCode(figurePointArray))*5;
+    }
 }

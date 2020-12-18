@@ -19,20 +19,6 @@ class Triangle extends Figure {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        Triangle triangle = (Triangle) (obj);
-        return (this.pointA.samePoint(triangle.pointA)
-                && (this.pointB.samePoint(triangle.pointB))
-                && (this.pointC.samePoint(triangle.pointC)));
-    }
-
-    @Override
     public String getCoordInfo() {
         return "Triangle ("
                 + pointA.getX() + "," + pointA.getY() + ";  "

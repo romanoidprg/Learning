@@ -23,21 +23,6 @@ class Square extends Figure {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        Square square = (Square) (obj);
-        return (this.pointA.samePoint(square.pointA)
-                && (this.pointB.samePoint(square.pointB))
-                && (this.pointC.samePoint(square.pointC))
-                && (this.pointD.samePoint(square.pointD)));
-    }
-
-    @Override
     public double perimCalc() {
         return pointA.lengthToPoint(pointB) + pointB.lengthToPoint(pointC)
                 + pointC.lengthToPoint(pointD) + pointD.lengthToPoint(pointA);

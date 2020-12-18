@@ -96,7 +96,6 @@ public class Main {
 
 
 
-
 /*        Figure[] arrayLine = new Figure[0];
         try {
             arrayLine = new Figure[]{

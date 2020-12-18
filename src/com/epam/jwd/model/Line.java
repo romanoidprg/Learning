@@ -15,18 +15,6 @@ class Line extends Figure {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        Line line = (Line) (obj);
-        return (this.pointA.samePoint(line.pointA) && (this.pointB.samePoint(line.pointB)));
-    }
-
-    @Override
     public double perimCalc() {
         return pointA.lengthToPoint(pointB);
     }

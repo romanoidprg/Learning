@@ -8,6 +8,8 @@ import com.epam.jwd.model.FigureType;
 import com.epam.jwd.model.Point;
 import com.epam.jwd.model.SimpleFigureFactory;
 
+import java.util.stream.Collectors;
+
 public class PostProcessFactory extends FigureFactoryDecorator {
 
     public PostProcessFactory(FigureFactory f) {
@@ -16,13 +18,21 @@ public class PostProcessFactory extends FigureFactoryDecorator {
 
     @Override
     public Figure CreateFigure(FigureType figureType, Point[] arrayPoint) throws FigureException {
-        Figure figure = super.CreateFigure(figureType, arrayPoint);
+        final Figure figure = super.CreateFigure(figureType, arrayPoint);
+
 
         if (figure == null) {
             throw new FigureNotExistException(FigureType.FIG_NOTEXIST_ORUNKNOWN_MSG);
+        } else if (SimpleFigureFactory.figureCash.isEmpty()
+                || (SimpleFigureFactory.figureCash.stream().noneMatch(figure::equals))) {
+            SimpleFigureFactory.figureCash.add(figure);
+            return figure;
+        } else {
+            return SimpleFigureFactory.figureCash.stream()
+                    .filter(figure::equals).collect(Collectors.toList()).get(0);
         }
 
-        if (SimpleFigureFactory.figureCash.isEmpty()) {
+      /*  if (SimpleFigureFactory.figureCash.isEmpty()) {
             SimpleFigureFactory.figureCash.add(figure);
         } else {
             int i = 0;
@@ -40,6 +50,6 @@ public class PostProcessFactory extends FigureFactoryDecorator {
                 figure = SimpleFigureFactory.figureCash.get(indexOfExistFig);
             }
         }
-        return figure;
+        return figure;*/
     }
 }
